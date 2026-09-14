@@ -4,8 +4,17 @@
 
 package pgstore
 
-type Person struct {
-	ID        int32  `json:"id"`
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
+import (
+	"github.com/google/uuid"
+	"github.com/jackc/pgx/v5/pgtype"
+)
+
+type User struct {
+	ID           uuid.UUID          `json:"id"`
+	UserName     string             `json:"user_name"`
+	Email        string             `json:"email"`
+	PasswordHash []byte             `json:"password_hash"`
+	Bio          string             `json:"bio"`
+	CreatedAt    pgtype.Timestamptz `json:"created_at"`
+	UpdatedAt    pgtype.Timestamptz `json:"updated_at"`
 }
