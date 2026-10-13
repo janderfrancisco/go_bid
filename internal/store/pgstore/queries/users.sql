@@ -8,3 +8,9 @@ SELECT id, "user_name", "email", "bio", "created_at", "updated_at"
 FROM users
 WHERE id = $1
 LIMIT 1;
+
+-- name: GetUserByEmail :one
+SELECT id, "user_name", "email", "bio", "created_at", "updated_at", "password_hash"
+FROM users
+WHERE email = $1
+LIMIT 1;
